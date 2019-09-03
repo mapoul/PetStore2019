@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PetStore2019.Core.ApplicationServices;
+using PetStore2019.Core.Entities;
 
 namespace PetStore2019.UI.RestAPI.Controllers
 {
@@ -11,11 +13,13 @@ namespace PetStore2019.UI.RestAPI.Controllers
     [ApiController]
     public class PetsController : ControllerBase
     {
+
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<List<Pet>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _petService.GetPets();
+
         }
 
         // GET api/values/5
@@ -42,5 +46,13 @@ namespace PetStore2019.UI.RestAPI.Controllers
         public void Delete(int id)
         {
         }
+
+        private readonly IPetService _petService;
+        public PetsController(IPetService petService)
+        {
+            _petService = petService;
+        }
+
+        
     }
 }
