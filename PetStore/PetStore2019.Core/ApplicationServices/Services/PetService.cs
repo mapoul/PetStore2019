@@ -51,7 +51,8 @@ namespace PetStore2019.Core.ApplicationServices.Services
             List<Pet> petsByPrice = new List<Pet>();
             petsByPrice.AddRange(_petRepository.ReadAllPets());
             petsByPrice.Sort((pet1, pet2) => pet1.Price.CompareTo(pet2.Price));
-            return _petRepository.ReadAllPets();
+            //return _petRepository.ReadAllPets();
+            return petsByPrice;
 
         }
 

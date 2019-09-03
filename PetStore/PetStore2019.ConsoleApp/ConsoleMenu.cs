@@ -28,7 +28,7 @@ namespace PetStore2019.ConsoleApp
             {
                 Name = "Fiddo",
                 Birthdate = new DateTime(2018, 3, 19),
-                Color = "White with brown spots",
+                Color = "White",
                 Race = Pet.Species.Hund,
                 Price = 2500,
                 PreviousOwner = "Tonni Bonde",
@@ -47,6 +47,54 @@ namespace PetStore2019.ConsoleApp
                 SoldDate = new DateTime(2019, 8, 30)
             };
             petRepository.CreatePet(pet2);
+
+            var pet3 = new Pet()
+            {
+                Name = "Plet",
+                Birthdate = new DateTime(2018, 3, 19),
+                Color = "Spotted",
+                Race = Pet.Species.Kat,
+                Price = 205,
+                PreviousOwner = "Tonni Bonde",
+                SoldDate = new DateTime(2019, 6, 24)
+            };
+            petRepository.CreatePet(pet3);
+
+            var pet4 = new Pet()
+            {
+                Name = "Kvik",
+                Birthdate = new DateTime(2018, 3, 19),
+                Color = "Black",
+                Race = Pet.Species.Hund,
+                Price = 5000,
+                PreviousOwner = "Tonni Bonde",
+                SoldDate = new DateTime(2019, 6, 24)
+            };
+            petRepository.CreatePet(pet4);
+
+            var pet5 = new Pet()
+            {
+                Name = "Fede",
+                Birthdate = new DateTime(2018, 3, 19),
+                Color = "Grey",
+                Race = Pet.Species.Kat,
+                Price = 300,
+                PreviousOwner = "Tonni Bonde",
+                SoldDate = new DateTime(2019, 6, 24)
+            };
+            petRepository.CreatePet(pet5);
+
+            var pet6 = new Pet()
+            {
+                Name = "Balter",
+                Birthdate = new DateTime(2018, 3, 19),
+                Color = "Brown",
+                Race = Pet.Species.Ged,
+                Price = 1200,
+                PreviousOwner = "Tonni Bonde",
+                SoldDate = new DateTime(2019, 6, 24)
+            };
+            petRepository.CreatePet(pet6);
         }
        
         public void RunMenu()
@@ -137,11 +185,28 @@ namespace PetStore2019.ConsoleApp
 
         private List<Pet> Get5CheapestPets()
         {
+            Console.WriteLine("\nList of 5 cheapest Pets");
+            var pets = petService.GetCheapestFivePets();
+            foreach (var pet in pets)
+            {
+                Console.WriteLine($"Id: {pet.Id} Name: {pet.Name} Birthdate: {pet.Birthdate} Color: {pet.Color} Race: {pet.Race} Price: {pet.Price} Previous Owner: {pet.PreviousOwner} Sold Date: {pet.SoldDate}");
+            }
+
+            Console.WriteLine("\n");
             return petService.GetCheapestFivePets();
         }
 
         private List<Pet> SortPetsByPrice()
         {
+            Console.WriteLine("\nList of Pets");
+            var pets = petService.SortPetsByPrice();
+            foreach (var pet in pets)
+            {
+                Console.WriteLine($"Id: {pet.Id} Name: {pet.Name} Birthdate: {pet.Birthdate} Color: {pet.Color} Race: {pet.Race} Price: {pet.Price} Previous Owner: {pet.PreviousOwner} Sold Date: {pet.SoldDate}");
+            }
+
+            Console.WriteLine("\n");
+            
             return petService.SortPetsByPrice();
         }
 
@@ -150,17 +215,47 @@ namespace PetStore2019.ConsoleApp
             Console.WriteLine("Type the race you want to find");
             var Race = Console.ReadLine();
             var species = Pet.Species.Kat;
+            
 
             switch (Race)
             {
                 case "Ged":
                     species = Pet.Species.Ged;
+                    petService.SearchPets(species);
+                    Console.WriteLine("\nList of Pets");
+                    var pets = petService.SearchPets(species);
+                    foreach (var pet in pets)
+                    {
+                        Console.WriteLine($"Id: {pet.Id} Name: {pet.Name} Birthdate: {pet.Birthdate} Color: {pet.Color} Race: {pet.Race} Price: {pet.Price} Previous Owner: {pet.PreviousOwner} Sold Date: {pet.SoldDate}");
+                    }
+
+                    Console.WriteLine("\n");
                     break;
                 case "Hund":
                     species = Pet.Species.Hund;
+                    petService.SearchPets(species);
+                    Console.WriteLine("\nList of Pets");
+                    var pets1 = petService.SearchPets(species);
+                    foreach (var pet in pets1)
+                    {
+                        Console.WriteLine($"Id: {pet.Id} Name: {pet.Name} Birthdate: {pet.Birthdate} Color: {pet.Color} Race: {pet.Race} Price: {pet.Price} Previous Owner: {pet.PreviousOwner} Sold Date: {pet.SoldDate}");
+                    }
+
+                    Console.WriteLine("\n");
+                    petService.SearchPets(species);
                     break;
                 case "Kat":
                     species = Pet.Species.Kat;
+                    petService.SearchPets(species);
+                    Console.WriteLine("\nList of Pets");
+                    var pets2 = petService.SearchPets(species);
+                    foreach (var pet in pets2)
+                    {
+                        Console.WriteLine($"Id: {pet.Id} Name: {pet.Name} Birthdate: {pet.Birthdate} Color: {pet.Color} Race: {pet.Race} Price: {pet.Price} Previous Owner: {pet.PreviousOwner} Sold Date: {pet.SoldDate}");
+                    }
+
+                    Console.WriteLine("\n");
+                    petService.SearchPets(species);
                     break;
                 default:
                     break;
