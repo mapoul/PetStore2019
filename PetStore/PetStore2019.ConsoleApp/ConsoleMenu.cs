@@ -99,9 +99,6 @@ namespace PetStore2019.ConsoleApp
        
         public void RunMenu()
         {
-            
-            
-
             int number;
 
             MenuText();

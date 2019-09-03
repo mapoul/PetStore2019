@@ -40,7 +40,7 @@ namespace PetStore2019.UI.RestAPI
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseMvc();
         }
     }
