@@ -10,6 +10,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using PetStore2019.Core.ApplicationServices;
+using PetStore2019.Core.ApplicationServices.Services;
+using PetStore2019.Core.DomainServices;
+using PetStore2019.Infrastructure.Data.Repositories;
 
 namespace PetStore2019.UI.RestAPI
 {
@@ -25,6 +29,8 @@ namespace PetStore2019.UI.RestAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IPetRepository, PetRepository>();
+            services.AddScoped<IPetService, PetService>();                
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
