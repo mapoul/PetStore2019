@@ -7,6 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using PetStore2019.Infrastructure.Data;
 
 namespace PetStore2019.UI.RestAPI
 {
@@ -14,7 +15,9 @@ namespace PetStore2019.UI.RestAPI
     {
         public static void Main(string[] args)
         {
+            FakeDB.initData();
             CreateWebHostBuilder(args).Build().Run();
+            
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
