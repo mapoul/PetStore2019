@@ -1,35 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using PetStore2019.Core.DomainServices;
 using PetStore2019.Core.Entities;
 
 namespace PetStore2019.Core.ApplicationServices.Services
 {
     public class OwnerService : IOwnerService
     {
+
+        private IOwnerRepository _ownerRepository;
+
+        public OwnerService(IOwnerRepository ownerRepository)
+        {
+            _ownerRepository = ownerRepository;
+        }
+
         public void CreateOwner(Owner owner)
         {
-            throw new NotImplementedException();
+            _ownerRepository.CreateOwner(owner);
         }
 
         public void DeleteOwner(int id)
         {
-            throw new NotImplementedException();
+            _ownerRepository.DeleteOwnerByID(id);
         }
 
-        public List<Owner> GetOwner()
+        public List<Owner> GetOwners()
         {
-            throw new NotImplementedException();
+            return _ownerRepository.ReadAllOwner();
         }
 
         public Owner SearchOwnerById(int id)
         {
-            throw new NotImplementedException();
+           return _ownerRepository.ReadByID(id);
         }
 
-        public void UpdateOwner(int id, Pet pet)
+        public void UpdateOwner(int id, Owner owner)
         {
-            throw new NotImplementedException();
+            _ownerRepository.UpdateOwner(owner, id);
         }
     }
 }

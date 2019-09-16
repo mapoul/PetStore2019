@@ -6,10 +6,10 @@ namespace PetStore2019.Core.ApplicationServices
 {
     public interface IOwnerService
     {
-        List<Owner> GetOwner();
+        List<Owner> GetOwners();
         void CreateOwner(Owner owner);
         void DeleteOwner(int id);
-        void UpdateOwner(int id, Pet pet);
+        void UpdateOwner(int id, Owner owner);
         Owner SearchOwnerById(int id);
     }
 }

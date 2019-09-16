@@ -13,7 +13,7 @@ namespace PetStore2019.Core.DomainServices
 
         List<Owner> ReadAllOwner();
         //Update Pets
-        Owner UpdatePet(Owner ownerUpdate, int id);
+        Owner UpdateOwner(Owner ownerUpdate, int id);
         //Delete Pet
         Owner DeleteOwnerByID(int id);
     }

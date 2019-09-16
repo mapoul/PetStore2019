@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -14,6 +15,7 @@ using PetStore2019.Core.ApplicationServices;
 using PetStore2019.Core.ApplicationServices.Services;
 using PetStore2019.Core.DomainServices;
 using PetStore2019.Infrastructure.Data.Repositories;
+using PetStore2019.Infrastructure.Data.SQL;
 
 namespace PetStore2019.UI.RestAPI
 {
@@ -30,7 +32,11 @@ namespace PetStore2019.UI.RestAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IPetRepository, PetRepository>();
-            services.AddScoped<IPetService, PetService>();                
+            services.AddScoped<IPetService, PetService>();
+            services.AddScoped<IOwnerRepository, OwnerRepository>();
+            services.AddScoped<IOwnerService, OwnerService>();
+
+            services.AddDbContext<PetshopContext>(opt => opt.UseSqlite("Data Source = Pethop.db"));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

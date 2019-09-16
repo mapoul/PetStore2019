@@ -58,7 +58,7 @@ namespace PetStore2019.Infrastructure.Data.Repositories
                 FakeDB._pets.Remove(petFound);
             }
 
-            return null;
+            return petFound;
         }
     }
 }
