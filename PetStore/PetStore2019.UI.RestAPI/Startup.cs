@@ -14,6 +14,7 @@ using Microsoft.Extensions.Options;
 using PetStore2019.Core.ApplicationServices;
 using PetStore2019.Core.ApplicationServices.Services;
 using PetStore2019.Core.DomainServices;
+using PetStore2019.Core.Entities;
 using PetStore2019.Infrastructure.Data.Repositories;
 using PetStore2019.Infrastructure.Data.SQL;
 
@@ -44,7 +45,12 @@ namespace PetStore2019.UI.RestAPI
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
+                using(var scope = app.ApplicationServices.CreateScope())
             {
+                    var context = scope.ServiceProvider.GetRequiredService<PetshopContext>();
+                    context.Database.EnsureDeleted();
+                    context.Database.EnsureCreated();
+                    context.pets.Add(new Pet());
                 app.UseDeveloperExceptionPage();
             }
             else
